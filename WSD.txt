@@ -31,3 +31,19 @@ PHP with php modules (Server Side):
 -----------------------------------
 
 apt install php libapache2-mod-php php-mysql
+
+Optional:
+---------
+-> Just Checking by creating info.php file with the code.
+nano /var/www/html/info.php
+<?php
+phpinfo();
+?>
+
+Installing Phpmyadmin (Mysql - Database GUI version):
+-----------------------------------------------------
+
+apt install phpmyadmin php-mbsting php-gettext
+
+-> Enabling (php module for phpmyadmin):
+phpenmod mbstring
