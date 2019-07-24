@@ -1,0 +1,33 @@
+Linux (Ubuntu Server):
+----------------------
+
+Ubuntu Installing.......
+
+-> Regular update before install package in linux machine:
+
+apt update
+
+Apache2 Web Server (HTTP):
+--------------------------
+
+apt install apache2
+
+-> configuration file dir - /etc/apache2
+
+Mysql Server (Database - DBMS):
+-------------------------------
+
+apt install mysql-server
+
+mysql_secure_installation
+
+-> mysql need to change auth type from auth_socket to password
+
+SELECT user,authentication_string,host,plugin FROM mysql.user;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+PHP with php modules (Server Side):
+-----------------------------------
+
+apt install php libapache2-mod-php php-mysql
