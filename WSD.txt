@@ -47,3 +47,50 @@ apt install phpmyadmin php-mbsting php-gettext
 
 -> Enabling (php module for phpmyadmin):
 phpenmod mbstring
+
+
+
+(Virtual Host)
+
+
+
+CMS Setup (Wordpress):
+-----------------------------
+
+-> Downloading CMS
+
+wget -c http://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz
+
+-> Moving to the correct directory structure.
+
+rsync -av wordpress/* /var/www/webroot(html)
+
+Not only rsync we can use mv too...
+
+-> Setting the correct permission.
+
+chown -R www-data:www-data /var/www/webroot(html)
+chmod -R 755 /var/www/webroot(html)
+
+Database creation for CMS (Wordpress):
+--------------------------------------
+
+mysql -u root -p 
+
+-> In mysql prompt
+
+mysql> CREATE DATABASE wp_myblog;
+mysql> GRANT ALL PRIVILEGES ON wp_myblog.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';
+mysql> FLUSH PRIVILEGES;
+mysql> EXIT;
+
+CMS Installation (wordpress):
+-----------------------------
+
+-> Restart the web server applications
+
+systemctl restart apache2.service 
+systemctl restart mysql.service
+
+-> Load the server ip in browser and start installation.....
