@@ -23,9 +23,9 @@ Output: security2_module (shared)
 Configuring ModSecurity:
 ------------------------
 
-ModSecurity engine needs rules to work. The rules decide how communication is handled on the web server. Depending on the configuration, ModSecurity can pass, drop, redirect, execute a script or even display a status code during a session.
+ModSecurity engine needs rules to work. The rules decide how communication is handled on the web server. Depending on the configuration, ModSecurity can pass, drop, redirect, execute a script or even display a status code during a session.  
 
-There is a default configuration file /etc/modsecurity/modsecurity.conf-recommended which you should copy to /etc/modsecurity/modsecurity.conf to enable and configure ModSecurity. To do this, run the command below:
+There is a default configuration file /etc/modsecurity/modsecurity.conf-recommended which you should copy to /etc/modsecurity/modsecurity.conf to enable and configure ModSecurity. To do this, run the command below:  
 
 cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 
@@ -42,11 +42,11 @@ systemctl restart apache2
 Modsec - LOGFILE:
 -----------------
 
-A new log file for ModSecurity will be created in the Apache logs directory at /var/log/apache2/modsec_audit.log
+A new log file for ModSecurity will be created in the Apache logs directory at /var/log/apache2/modsec_audit.log  
 
--> ModSecurity has default rules set located at /usr/share/modsecurity-crs directory. However, it is always recommended to download the rules set from GitHub:
+-> ModSecurity has default rules set located at /usr/share/modsecurity-crs directory. However, it is always recommended to download the rules set from GitHub:  
 
--> Before, you do this, rename the default rules directory
+-> Before, you do this, rename the default rules directory  
 
 mv /usr/share/modsecurity-crs /usr/share/modsecurity-crs.bk
 
