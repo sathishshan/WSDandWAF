@@ -36,10 +36,11 @@ Optional:
 ---------
 -> Just Checking by creating info.php file with the code.
 nano /var/www/html/info.php
+```
 <?php
 phpinfo();
 ?>
-
+```
 -> PHP ini config file location
 
 /etc/php/7.2/apache2/php.ini
@@ -72,7 +73,8 @@ cp 000-default.conf domain.com.conf
 
 -> And modify the syntax based on your configration
 
-EX:
+EX:  
+```
 <VirtualHost *:80>
     ServerAdmin admin@example.com
     ServerName example.com
@@ -81,7 +83,7 @@ EX:
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-
+```
 -> After configring use enable the sites.
 
 a2ensite domain.com.conf
@@ -141,10 +143,10 @@ mysql -u root -p
 
 -> In mysql prompt
 
-mysql> CREATE DATABASE wp_myblog;
-mysql> GRANT ALL PRIVILEGES ON wp_myblog.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';
-mysql> FLUSH PRIVILEGES;
-mysql> EXIT;
+mysql> CREATE DATABASE wp_myblog;  
+mysql> GRANT ALL PRIVILEGES ON wp_myblog.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';  
+mysql> FLUSH PRIVILEGES;  
+mysql> EXIT;  
 
 CMS Installation (wordpress):
 -----------------------------
@@ -162,11 +164,11 @@ If your are facing difficulties with file upload max size exceded
 Max upload file size:
 ---------------------
 
-[post_max_size] sets max size of post data allowed. This setting also affects file upload.
-To upload large files, this value must be larger than upload_max_filesize.
-If memory limit is enabled by your configure script, memory_limit also affects file uploading. 
-Generally speaking, memory_limit should be larger than post_max_size.
-
+[post_max_size] sets max size of post data allowed. This setting also affects file upload.  
+To upload large files, this value must be larger than upload_max_filesize.  
+If memory limit is enabled by your configure script, memory_limit also affects file uploading.   
+Generally speaking, memory_limit should be larger than post_max_size.  
+  
 upload_max_filesize = 12M  
 post_max_size = 13M  
 memory_limit = 15M  
