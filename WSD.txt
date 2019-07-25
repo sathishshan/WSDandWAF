@@ -40,6 +40,10 @@ nano /var/www/html/info.php
 phpinfo();
 ?>
 
+-> PHP ini config file location
+
+/etc/php/7.2/apache2/php.ini
+
 Installing Phpmyadmin (Mysql - Database GUI version):
 -----------------------------------------------------
 
@@ -48,11 +52,68 @@ apt install phpmyadmin php-mbsting php-gettext
 -> Enabling (php module for phpmyadmin):
 phpenmod mbstring
 
+-> Phpmyadmin configuration file /etc/phpmyadmin/config.inc.php
 
+--------------------------------------------------------------------------------------------------------------------------------------------
 
-(Virtual Host)
+Virtual host (Name based):
+--------------------------
 
+Extract site packages in /var/www/domain.com/
 
+-> Virtual host configuration file
+
+/etc/apache2/sites-available/000-default.conf
+
+-> cp the default VH config file to your domain name like..
+
+cd /etc/apache2/sites-available/
+cp 000-default.conf domain.com.conf
+
+-> And modify the syntax based on your configration
+
+EX:
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/example.com/public_html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+-> After configring use enable the sites.
+
+a2ensite domain.com.conf
+
+You can disable the default site now.. this is optional..
+
+a2dissite 000-default.conf
+
+Site is enabled now, restart the apache2 server to reflect..
+
+service apache2 restart
+
+Name Server Configuration:
+--------------------------
+
+-> Now we configure little in client or host computer..
+
+If your are using linux
+
+nano /etc/hosts
+
+If your are using Windows
+
+C:\Windows\System32\drivers\etc\hosts
+
+-> Add the server IP and the domain name like this
+
+127.0.0.1 domain.com
+
+Save and close the file, now you site is fully setuped.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 CMS Setup (Wordpress):
 -----------------------------
