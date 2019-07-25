@@ -167,6 +167,6 @@ To upload large files, this value must be larger than upload_max_filesize.
 If memory limit is enabled by your configure script, memory_limit also affects file uploading. 
 Generally speaking, memory_limit should be larger than post_max_size.
 
-upload_max_filesize = 12M
-post_max_size = 13M
-memory_limit = 15M
+upload_max_filesize = 12M  
+post_max_size = 13M  
+memory_limit = 15M  
