@@ -1,0 +1,28 @@
+Whitelist IP Address with ModSecurity:
+--------------------------------------
+
+If your business has a website, you may be familiar with the mod_security module for Apache Web servers. ModSecurity is a firewall module for Apache servers that blocks malicious programs, scripts and injections, helping to keep your website more secure. Occasionally, you might need to bypass the module filters to accommodate a testing environment or to allow access for a particular IP address, such as for a developer working at home. Whitelisting is a straightforward task that you can accomplish with a simple text editor.
+Whitelist REMOTE_ADDR
+
+Browse to your “modsecurity.conf” file and add one on below rules. Note that this method only works on servers where you have access root permission to the core server files.
+Contains syntax
+
+SecRule REMOTE_ADDR "@contains 127.0.0.1" "id:1,phase:1,nolog,allow,ctl:ruleEngine=Off"
+
+Regular expression syntax
+
+SecRule REMOTE_ADDR "^127\.xxx\.xxx\.1$" "id:1,phase:1,nolog,allow,ctl:ruleEngine=Off"
+
+With the above rule in place, no mod_security rules will be checked for your IP address.
+
+If you are under a load Balancer use:
+
+SecRule REQUEST_HEADERS:X-Forwarded-For "@Contains 127.0.0.1" phase:1,nolog,allow,pass,ctl:ruleEngine=off,id:1
+
+Whitelist network with ipMatch
+
+SecRule REMOTE_ADDR "@ipMatch 127.0.0.0/16" "id:1,phase:1,nolog,allow,ctl:ruleEngine=Off"
+
+What is my IP-Address ?
+
+Make sure to replace the IP address numbers (127.0.0.1) with your own IP address. You can enter “what is my IP” on Google if you’re unsure
