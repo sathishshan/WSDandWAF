@@ -1,0 +1,31 @@
+Optional Directives to Modify
+-----------------------------
+
+If you're trying this out on a production server, change this directive only after testing all your rules.
+
+Another directive to modify is SecResponseBodyAccess. This configures whether response bodies are buffered (i.e. read by modsecurity). This is only neccessary if data leakage detection and protection is required. Therefore, leaving it On will use up droplet resources and also increase the logfile size.
+
+Find this
+
+SecResponseBodyAccess On
+
+and change it to:
+
+SecResponseBodyAccess Off
+
+There are other directives you may want to customize by editing /etc/modsecurity/modsecurity.conf. The SecRequestBodyLimit and SecRequestBodyNoFilesLimit directives limit the maximum data that can be posted to your web application.
+
+In particular, the SecRequestBodyLimit directive specifies the maximum POST data size. If anything larger is sent by a client the server will respond with a 413 Request Entity Too Large error. If your web application does not have any file uploads, this value can be left as it is. The pre-configured value specified in the configuration file is 13107200 bytes (12.5MB). If you want to change this value, look for the following line modsecurity.conf:
+Optional `modsecurity.conf` directive change
+
+SecRequestBodyLimit 13107200
+
+Similarly, the SecRequestBodyNoFilesLimit limits the size of POST data minus file uploads. This value should be set as low as possible to reduce susceptibility to denial of service (DoS) attacks when someone is sending request bodies of very large sizes. The pre-configured value in the configuration file is 131072 bytes (128KB). If you want to change this value, look for the following line modsecurity.conf:
+Optional `modsecurity.conf` directive change
+
+SecRequestBodyNoFilesLimit 131072
+
+A directive that affects server performance is SecRequestBodyInMemoryLimit. This directive is pretty much self-explanatory; it specifies how much of "request body" data (POSTed data) should be kept in the memory (RAM), anything more will be placed in the hard disk (just like swapping). Because Droplets use SSDs, this is not much of an issue. However, this can be changed if you have RAM to spare. The pre-configured value for this directive is 128KB. If you want to change this value, look for the following line modsecurity.conf:
+Optional `modsecurity.conf` directive change
+
+SecRequestBodyInMemoryLimit 131072
