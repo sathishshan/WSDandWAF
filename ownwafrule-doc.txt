@@ -1,0 +1,51 @@
+Writing Your Own mod_security Rules:
+------------------------------------
+
+In this section, we'll create a rule chain which blocks the request if certain "spammy" words are entered in a HTML form.First, we'll create a PHP script which gets the input from a textbox and displays it back to the user.
+
+/var/www/form.php
+
+<html>
+    <body>
+        <?php
+            if(isset($_POST['data']))
+                echo $_POST['data'];
+            else
+            {
+        ?>
+                <form method="post" action="">
+                        Enter something here:<textarea name="data"></textarea>
+                        <input type="submit"/>
+                </form>
+        <?php
+            }
+        ?>
+    </body>
+</html>
+
+Custom rules can be added to any of the configuration files or placed in modsecurity directories. We'll place our rules in a separate new file.
+
+nano /usr/share/modsecurity-crs/modsec_custom_rule.txt.conf
+
+Add the following to this file:
+
+SecRule REQUEST_FILENAME "form.php" "id:'4000001',chain,deny,log,msg:'Spam detected'"
+SecRule REQUEST_METHOD "POST" chain
+SecRule REQUEST_BODY "@rx (?i:(pills|insurance|rolex))"
+
+or
+
+SecRule REQUEST_FILENAME "form.php" "id:'400001',chain,deny,log,msg:'Spam detected'"
+SecRule REQUEST_METHOD "POST" chain
+SecRule REQUEST_BODY "@rx (?i:(blockedword1|blockedword2))"
+
+Save the file and reload Apache. Open http://yourwebsite.com/form.php in the browser and enter text containing any of these words: pills, insurance, rolex or blockedword1 or blockedword2.
+
+You'll either see a 403 page and a log entry or only a log entry based on SecRuleEngine setting. The syntax for SecRule is
+
+SecRule VARIABLES OPERATOR [ACTIONS]
+
+Here we used the chain action to match variables REQUEST_FILENAME with form.php, REQUEST_METHOD with POST and REQUEST_BODY with the regular expression (@rx) string (pills|insurance|rolex). The ?i: does a case insensitive match. On a successful match of all these three rules, the ACTION is to deny and log with the msg "Spam detected." The chain action simulates the logical AND to match all the three rules.
+
+
+Open http://your_server_ip/form.php in the browser. If enter text containing pills, insurance, rolex or blockedword1 or blockedword2, you will see a 403 page.
