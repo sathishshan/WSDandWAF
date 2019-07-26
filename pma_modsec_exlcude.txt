@@ -1,0 +1,22 @@
+Exclue phpmyadmin from modsecurity:
+-----------------------------------
+
+cd nano /etc/apache2/conf-available/phpmyadmin.conf //Actual path is /etc/phpmyadmin/phpmyadmin.conf
+
+-> Add the snippet in below the configuration file
+
+<Directory /usr/share/phpmyadmin>
+SecRuleEngine Off
+</Directory>
+
+-> Restart the apache2
+
+systemctl reload apache2
+
+-> If error gets while editing tables in phpmyadmin (sql queries), add the following lines in phpmyadmin config file
+
+nano /etc/phpmyadmin/config.inc.php
+
+$cfg['SendErrorReports'] = 'never';
+
+-> Save it...
