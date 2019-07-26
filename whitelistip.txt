@@ -5,6 +5,12 @@ If your business has a website, you may be familiar with the mod_security module
 Whitelist REMOTE_ADDR
 
 Browse to your “modsecurity.conf” file and add one on below rules. Note that this method only works on servers where you have access root permission to the core server files.
+
+-> Create a ipwhitelist.conf in /usr/share/modsecurity-crs/ and add the following rules as you wish & restart the apache2 server...
+
+Note: Make sure the directory "/usr/share/modsecurity-crs/" is included in apache mod configuration.
+nano /etc/apache2/mods-available/security2.conf
+
 Contains syntax
 
 SecRule REMOTE_ADDR "@contains 127.0.0.1" "id:1,phase:1,nolog,allow,ctl:ruleEngine=Off"
