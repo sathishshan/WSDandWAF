@@ -1,0 +1,35 @@
+Virtual Host Specific MOD_SEC:
+
+-> Path to virtual host conf
+
+/etc/apache2/sites-available
+
+EXAMPLE:
+--------
+
+<IfModule mod_security2.c>
+    SecRuleEngine On
+    ...... (any other directives you might want to override from the defaul conf)
+</IfModule>
+
+---------------------------------------------------------------------------------------
+
+Including the rules at VHOST level did the trick.
+The config which causes the error:
+
+IncludeOptional folder_to_rules/modsecurity_crs_41_xss_attacks.conf
+<VirtualHost *:80>
+    ServerName example.com
+    SecRuleEngine On
+
+</VirtualHost>
+
+Solution:
+
+<VirtualHost *:80>
+    ServerName example.com
+    SecRuleEngine On
+    IncludeOptional folder_to_rules/modsecurity_crs_41_xss_attacks.conf
+</VirtualHost>
+
+wherever the defaul config is stored, set SecRuleEngine Off but leave the other directives in place.
