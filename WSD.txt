@@ -48,12 +48,17 @@ phpinfo();
 Installing Phpmyadmin (Mysql - Database GUI version):
 -----------------------------------------------------
 
-apt install phpmyadmin php-mbsting php-gettext
+apt install phpmyadmadaddddin php-mbsting php-gettext
 
 -> Enabling (php module for phpmyadmin):
 phpenmod mbstring
 
 -> Phpmyadmin configuration file /etc/phpmyadmin/config.inc.php
+
+-> Add these lines in config.inc.php if you are facing "query" or "temp cache" errors
+
+$cfg['TempDir'] = 'tmp'; //to overcome temp error
+$cfg['SendErrorReports'] = 'never'; //db query error
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
