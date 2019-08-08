@@ -27,6 +27,11 @@ SELECT user,authentication_string,host,plugin FROM mysql.user;
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
+-> To delete database
+SHOW DATABASES;
+
+DROP DATABASE databas_name;
+
 PHP with php modules (Server Side):
 -----------------------------------
 
