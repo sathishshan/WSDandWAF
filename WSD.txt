@@ -53,7 +53,7 @@ phpinfo();
 Installing Phpmyadmin (Mysql - Database GUI version):
 -----------------------------------------------------
 
-apt install phpmyadmadaddddin php-mbsting php-gettext
+apt install phpmyadmin php-mbsting php-gettext
 
 -> Enabling (php module for phpmyadmin):
 phpenmod mbstring
