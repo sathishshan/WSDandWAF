@@ -64,6 +64,7 @@ Add the following two lines at the end
 
 IncludeOptional "/usr/share/modsecurity-crs/*.conf"
 IncludeOptional "/usr/share/modsecurity-crs/rules/*.conf"
+IncludeOptional "/etc/modsecurity/*.conf"
 
 -> Restart Apache
 
