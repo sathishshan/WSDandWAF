@@ -1,0 +1,15 @@
+Exclude Specific Path from modsecurity:
+--------------------------------------
+
+cd /etc/apache2/apache2.conf
+
+-> Add the snippet in below the configuration file
+
+<Directory /var/www/>
+SecRuleEngine Off
+</Directory>
+
+
+-> Restart the apache2
+
+systemctl reload apache2
