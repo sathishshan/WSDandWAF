@@ -3,7 +3,7 @@ Exclude Specific Path from modsecurity:
 
 cd /etc/apache2/apache2.conf
 
--> Add the snippet in below the configuration file
+-> Add the snippet in below to the configuration file
 
 <Directory /var/www/>
 SecRuleEngine Off
