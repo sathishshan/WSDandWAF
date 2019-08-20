@@ -3,7 +3,7 @@ Exclude phpmyadmin from modsecurity:
 
 cd nano /etc/apache2/conf-available/phpmyadmin.conf //Actual path is /etc/phpmyadmin/phpmyadmin.conf
 
--> Add the snippet in below the configuration file
+-> Add the snippet in below to the configuration file
 
 <Directory /usr/share/phpmyadmin>
 SecRuleEngine Off
