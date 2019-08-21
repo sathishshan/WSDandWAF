@@ -1,0 +1,14 @@
+PhMyAdmin 404 found in http://localhost/phpmyadmin/
+---------------------------------------------------
+
+nano  /etc/apache2/apache2.conf
+
+-> Add the below line into the end of the configuration file.
+
+Include /etc/phpmyadmin/apache.conf
+
+-> Save it...
+
+-> Restart the apache2
+
+systemctl reload apache2
