@@ -1,7 +1,7 @@
 Exclude Specific Path from modsecurity:
 --------------------------------------
 
-cd /etc/apache2/apache2.conf
+nano /etc/apache2/apache2.conf
 
 -> Add the snippet in below to the configuration file
 
