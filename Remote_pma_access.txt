@@ -1,0 +1,17 @@
+/**
+$i++;
+$cfg['Servers'][$i]['host'] = 'HostName:port'; //provide hostname and port if other than default
+$cfg['Servers'][$i]['user'] = 'userName';   //user name for your remote server
+$cfg['Servers'][$i]['password'] = 'Password';  //password
+$cfg['Servers'][$i]['auth_type'] = 'config';       // keep it as config
+$cfg['TempDir'] = 'tmp'; //temp cache
+**/
+
+/**
+$i++;
+$cfg['Servers'][$i]['host'] = '127.0.0.1'; //provide hostname and port if other than default
+$cfg['Servers'][$i]['user'] = 'username';   //user name for your remote server
+$cfg['Servers'][$i]['password'] = 'password';  //password
+$cfg['Servers'][$i]['auth_type'] = 'config';       // keep it as config
+$cfg['TempDir'] = 'tmp'; //temp cache
+**/
