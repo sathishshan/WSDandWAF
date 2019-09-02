@@ -1,0 +1,5 @@
+Among all the answers, for the problem above, this is the best one:
+
+ mysql> use db_name;
+ mysql> source file_name.sql;
+
