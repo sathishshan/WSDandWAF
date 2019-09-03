@@ -3,3 +3,13 @@ Among all the answers, for the problem above, this is the best one:
  mysql> use db_name;
  mysql> source file_name.sql;
 
+
+Regarding the time taken for importing huge files: most importantly, it takes more time because the default setting of MySQL is autocommit = true. You must set that off before importing your file and then check how import works like a gem.
+
+You just need to do the following thing:
+
+mysql> use db_name;
+
+mysql> SET autocommit=0 ; source the_sql_file.sql ; COMMIT ;
+
+
