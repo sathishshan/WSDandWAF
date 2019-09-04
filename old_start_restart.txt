@@ -1,0 +1,9 @@
+
+
+It depends largely on the service. The new and preferred way to stop start and restart services is through /etc/init.d. So, for example, to stop or start the Apache Webserver, you can run
+
+/etc/init.d/apache2 stop
+
+/etc/init.d/apache2 start
+
+The same is true of many other services, but probably not all. You can use the utility sysv-rc-conf to see which services you have that use an init.d script and manage them that way as well. Run it with sudo sysv-rc-conf
